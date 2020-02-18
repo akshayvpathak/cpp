@@ -1,0 +1,29 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class base
+{
+	public:
+   virtual void show()
+	{
+		cout<<"YOU ARE IN BASE"<<endl;
+	}
+};
+class derived:public base
+{
+	public:
+	void show()
+	{
+		cout<<"YOU ARE IN DERIVED"<<endl;
+	}
+};
+
+int main()
+{
+	derived a;
+	base b,*bp;
+    bp = &b;
+	bp->show();
+	bp = &a;
+	bp->show();
+}
