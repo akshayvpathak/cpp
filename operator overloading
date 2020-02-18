@@ -1,0 +1,101 @@
+#include<iostream>
+#include<string>
+#include<conio.h>
+using namespace std;
+class base
+{
+	int n;
+	public:
+	void getdata()
+	{
+		cout<<"ENTER THE VALUE OF N"<<endl;
+		cin>>n;
+	}
+	void operator ++(int)  //post increment
+	{
+		n = n+1;
+		
+	}
+	void operator ++() //pre increment
+	{
+		n = n+1;
+		
+	}
+	void operator --(int)  //post decrement
+	{
+		n = n-1;
+		
+	}
+	void operator --() //pre decrement
+	{
+		n = n-1;
+		
+	}
+    base operator +(base b)  // binary addition
+	{
+	   base c;
+	  c.n = n + b.n;
+	  return(c);
+	}
+    base operator -(base b)   //binary substraction
+	{
+	   base c;
+	  c.n = n - b.n;
+	  return(c);
+	}
+    base operator *(base b)   //binary multiplication
+	{
+	   base c;
+	  c.n = n * b.n;
+	  return(c);
+	}
+	base operator /(base b)   //binary division
+	{
+	   base c;
+	  c.n = n / b.n;
+	  return(c);
+	}
+	void display()
+	{
+		cout<<"THE VALUE OF N IS   :"<<n<<endl;
+	}
+	
+};
+int main()
+{
+/*
+	base a;
+	a.getdata();
+	a++;
+	a.display();
+	++a;
+	a.display();
+	--a;
+	a.display();
+	a--;
+	a.display();
+	getch();
+*/
+
+ /*
+ base a,b,c;
+ int i;
+ a.getdata();
+ a.display();
+ b.getdata();
+ b.display();
+ c = a+b;
+ cout<<"THE VALUE OF N AFTER ADDITION OF TWO OBJECT"<<endl;
+ c.display();
+ c = a-b;
+ cout<<"THE VALUE OF N AFTER SUBSTRACTION OF TWO OBJECT"<<endl;
+ c.display();
+ c = a*b;
+ cout<<"THE VALUE AFTER MULTIPLICATION OF TWO OBJECT"<<endl;
+ c.display();	
+ c = a/b;
+ cout<<"THE VALUE AFTER DIVISION OF TWO OBJECT"<<endl;
+ c.display();
+ getch();
+ */
+}
