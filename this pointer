@@ -1,0 +1,36 @@
+#include<iostream>
+#include<string>
+#include<conio.h>
+using namespace std;
+class base
+{
+	int a,b,c;
+	public:
+	base(int i,int j,int k)
+	{ 
+	 a=i;
+	 b=j;
+	 c=k; 
+	}
+	int sum()
+	{
+		return a+b+c;
+	}
+	int compare(base obj)
+	{
+		if(this->sum() > obj.sum())
+		return 0;
+		else 
+		return 1;
+	}
+};
+ 
+int main()
+{
+	base first(5,4,10),second(4,5,6);
+	if(second.compare(first)==0)
+	cout<<"SUM OF SECOND IS MORE THAN THE THE SUM OF FIRST"<<endl;
+	else
+	cout<<"SUM OF FIRST IS EQUAL OR MORE THAN THE SUM OF SECOND"<<endl;
+	getch();
+}
