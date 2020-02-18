@@ -1,0 +1,322 @@
+#include<iostream>
+#include<string>
+#include<conio.h>
+using namespace std;
+class node
+{
+ public:
+ int date,month,year;
+ int bookid,studentid;
+ string name,bname;
+ char dummy;
+ node *next;
+};
+class list:public node
+{
+ node *head,*last;
+ public:
+ list()
+ {
+ head = NULL;
+ last = NULL;
+ }
+ void create();
+ void display();
+ void search();
+ void insert(list a);
+ void sorting();
+ void Delete(list a);
+  int count();
+};
+
+
+int main()
+{
+	list a;
+	int m;
+  while(1)
+  {
+	cout<<"\n\nENTER 1 FOR ADD STUDENT RECORD"<<endl;
+	cout<<"ENTER 2 FOR SEARCH STUDENT RECORD"<<endl;
+	cout<<"ENTER 3 FOR SORTING STUDENT RECORD"<<endl;
+	cout<<"ENTER 4 FOR INSERT STUDENT RECORD"<<endl;
+	cout<<"ENTER 5 FOR TOTAL STUDENT RECORD"<<endl;
+	cout<<"ENTER 6 FOR DELETE STUDENT RECORD"<<endl;
+ 	cout<<"ENTER 7 FOR DISPLAY STUDENT RECORD"<<endl;
+ 	cout<<"ENTER 8 FOR EXIT"<<endl;
+ 	cin>>m;
+	switch(m)
+	{
+		case 1:
+		       a.create();
+		       break;
+        case 2:
+               a.search();
+               break;
+        case 3:
+               a.sorting();
+               break;
+        case 4:
+               a.insert(a);
+               break;
+        case 5:
+               a.count();
+               break;
+        case 6:
+               a.Delete(a);
+               break;
+        case 7:
+               a.display();
+               break;
+        case 8:
+               exit(0);
+               break;
+	}	
+   }	
+}
+
+void list::create()
+{
+ int n;
+ cout<<"ENTER THE TOTAL NUMBER OF RECORD YOU WANT TO ADD"<<endl;
+ cin>>n;
+ for(int i=0;i<n;i++)
+ {
+ node *temp = new node;
+ cout<<"\nEnter the Name Of Student:"<<endl;
+ fflush(stdin);
+ getline(cin,temp->name);
+ cout<<"Enter student ID number:\n";
+ cin>>temp->studentid;
+ cout<<"Enter the Name Of book:"<<endl;
+ fflush(stdin);
+ getline(cin,temp->bname);
+ cout<<"Enter Book ID number:"<<endl;
+ cin>>temp->bookid;
+ cout<<"Enter the issue date(DD/MM/YEAR):"<<endl;
+ cin>>temp->date>>temp->dummy>>temp->month>>temp->dummy>>temp->year;
+ temp->next=NULL;
+ if(head==NULL)
+ {
+ head = temp;
+ last = head;
+ }
+ else
+ { 
+ last->next = temp;
+ last = temp;
+ }
+ temp = temp->next;
+ }
+}
+
+void list::display()
+{
+ node *temp;
+ temp = head;
+ if(temp==NULL)
+ cout<<"LIST IS EMPTY"<<endl;
+ while(temp!=NULL)
+ {
+ cout<<"\nName Of Student  :   =  "<<temp->name<<endl;
+ cout<<"Student ID number  : =  "<<temp->studentid<<endl;
+ cout<<"Name Of book       : =  "<<temp->bname<<endl;
+ cout<<"Book ID number     : =  "<<temp->bookid<<endl;
+ cout<<"Issue date(DD/MM/YEAR)  "<<temp->date<<"/"<<temp->month<<"/"<<temp->year<<endl;
+ temp = temp->next;
+ }
+}
+
+void list::search()
+{
+ int index,i,flag=0;
+ string key;
+ node *temp,*temp1;
+ temp  = head;
+ temp1 = head;
+ cout<<"ENTER THE RECORD YOU WANT TO SEARCH"<<endl;
+ fflush(stdin);
+ getline(cin,key);
+ if(temp == NULL)
+ cout<<"LIST IS EMPTY"<<endl;
+ while(temp1 != NULL)
+ {
+   index=0;
+  while(temp != NULL) 
+  {
+  	index++;
+	if(temp->name==key)
+	{
+	cout<<"RECORD FOUND"<<endl;
+	cout<<"\nName Of Student  :   =  "<<temp->name<<endl;
+    cout<<"Student ID number  : =  "<<temp->studentid<<endl;
+    cout<<"Name Of book       : =  "<<temp->bname<<endl;
+    cout<<"Book ID number     : =  "<<temp->bookid<<endl;
+    cout<<"Issue date(DD/MM/YEAR)  "<<temp->date<<"/"<<temp->month<<"/"<<temp->year<<endl;
+    flag = 1;
+	break;
+	}
+	temp = temp->next;
+  }
+  for(i=0;i<index;i++)
+  temp1 = temp1->next;
+  temp = temp1;
+ }
+ if(flag==0)
+ cout<<"RECORD NOT FOUND"<<endl;
+}
+
+void list::sorting()
+{
+ node *cur,*prev;
+ string temp;
+ int key;
+ cur = head;
+ prev = head;
+ while(prev!=NULL)
+ {
+  cur = prev->next;
+  while(cur!=NULL)
+  {
+  if(prev->name > cur->name)
+  {
+  temp = prev->name;
+  prev->name = cur->name;
+  cur->name = temp;
+  temp = prev->bname;
+  prev->bname = cur->bname;
+  cur->bname = temp;
+  key = prev->studentid;
+  prev->studentid = cur->studentid;
+  cur->studentid = key;
+  key = prev->bookid;
+  prev->bookid = cur->bookid;
+  cur->bookid = key;
+  key = prev->date;
+  prev->date = cur->date;
+  cur->date = key;
+  key = prev->month;
+  prev->month = cur->month;
+  cur->month = key;
+  key = prev->year;
+  prev->year = cur->year;
+  cur->year = key;
+  }
+  cur = cur->next;
+  }
+  prev = prev->next;
+ }	
+}
+
+
+int list::count()
+{
+	int index=0;
+	node *temp;
+	temp = head;
+	while(temp!=NULL)
+	{
+		temp = temp->next;
+		index++;
+	}
+	return index;
+}
+
+void list::insert(list a)
+{
+ int pos=1,ch,i,n;
+ a.sorting();
+ n = a.count();
+ node *cur;
+ cur = head;
+ node *temp = new node;
+ cout<<"\nEnter the Name Of Student:"<<endl;
+ fflush(stdin);
+ getline(cin,temp->name);
+ cout<<"Enter student ID number:\n";
+ cin>>temp->studentid;
+ cout<<"Enter the Name Of book:"<<endl;
+ fflush(stdin);
+ getline(cin,temp->bname);
+ cout<<"Enter Book ID number:"<<endl;
+ cin>>temp->bookid;
+ cout<<"Enter the issue date(DD/MM/YEAR):"<<endl;
+ cin>>temp->date>>temp->dummy>>temp->month>>temp->dummy>>temp->year;
+ temp->next = NULL;
+ while(cur!=NULL && (cur->name < temp->name))
+ {
+ pos++;
+ cur = cur->next;		
+ }
+ cur=head;
+ if(pos==1)
+ {
+  temp->next = head;
+  head = temp;
+ }
+ else if(pos==(n+1))
+ {
+ last->next = temp;
+ last = temp;
+ }
+ else
+ {
+  for(i=1;i<pos-1;i++)
+  {
+  cur = cur->next;	
+  }
+  temp->next=cur->next;
+  cur->next = temp;
+ }
+}
+
+
+void list::Delete(list a)
+{
+ node *prev,*cur,*temp;
+ int i,m,pos=0,n;
+ string key;
+ temp =head;
+ cout<<"ENTER THE DATA YOU WANT TO DELETE"<<endl;
+ fflush(stdin);
+ getline(cin,key);
+ while(temp!=NULL)
+ {
+ pos++;
+ if(temp->name==key)
+ break;
+ temp = temp->next;
+ }
+ n = a.count();
+ if(temp!=NULL)
+ {
+  prev = head;
+  cur = head;
+  if(pos==1)
+  {
+   head = head->next;
+   delete(prev);
+  }
+  else if(pos==n)
+  {
+   while(cur->next!=NULL)
+   {
+   prev = cur;
+   cur = cur->next;
+   }
+   prev->next = NULL;
+   last = prev;
+   delete(cur);
+  }
+  else
+  {
+   for(i=1;i<pos;i++)
+   {
+   prev = cur ;
+   cur = cur->next;
+   }
+   prev->next = cur->next;
+   delete(cur);
+  }
+ }	
+}
