@@ -1,0 +1,38 @@
+#include<iostream>
+#include<conio.h>
+#include<string>
+using namespace std;
+class base
+	{
+	  string name;
+	  int studentid;
+	  string bookname;
+	  public:
+	  base();
+	  void display();
+    };
+int main()
+{
+	base a;
+	a.display();
+	getch();
+	
+}
+base::base()
+{
+	cout<<"ENTER STUDENT NAME"<<endl;
+	fflush(stdin);
+	getline(cin,name);
+	cout<<"ENTER STUDENT ID"<<endl;
+	cin>>studentid;
+	cout<<"ENTER BOOK NAME"<<endl;
+	fflush(stdin);
+	getline(cin,bookname);	
+}
+
+void base::display()
+{
+	cout<<"STUDENT NAME  :"<<name<<endl;
+	cout<<"STUDENT ID    :"<<studentid<<endl;
+	cout<<"BOOK NAME     :"<<bookname<<endl;
+}
