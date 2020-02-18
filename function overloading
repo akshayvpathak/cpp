@@ -1,0 +1,84 @@
+#include<iostream>
+#include<string>
+#include<conio.h>
+using namespace std;
+class base
+{
+int a;
+float b;
+double c;
+string d; 	
+public:
+void setdata()
+{
+	cout<<"ENTER INTEGER VALUE"<<endl;
+	cin>>a;
+	cout<<"ENTER FLOAT VALUE"<<endl;
+	cin>>b;
+	cout<<"ENTER DOUBLE VALUE"<<endl;
+	cin>>c;
+	cout<<"ENTER THE STRING"<<endl;
+	fflush(stdin);
+	getline(cin,d);
+};
+void setdata(int i,float j)
+{
+	a = i;
+	b = j;
+    cout<<"ENTER DOUBLE VALUE"<<endl;
+	cin>>c;
+	cout<<"ENTER THE STRING"<<endl;
+	fflush(stdin);
+	getline(cin,d);
+}
+/*void setdata(int i,double j)
+{
+	a = i;
+	c = j;
+    cout<<"ENTER FLOAT VALUE"<<endl;
+	cin>>b;
+	cout<<"ENTER THE STRING"<<endl;
+	fflush(stdin);
+	getline(cin,d);
+}*/
+void setdata(int i ,string j)
+{
+	a = i;
+	cout<<"ENTER FLOAT VALUE"<<endl;
+	cin>>b;
+	cout<<"ENTER DOUBLE VALUE"<<endl;
+	cin>>c;
+	d = j;
+}
+void display()
+{
+	cout<<"THE VALUE OF INTEGER IS  :"<<a<<endl;
+	cout<<"THE VALUE OF FLOAT IS    :"<<b<<endl;
+	cout<<"THE VALUE OF DOUBLE IS   :"<<c<<endl;
+	cout<<"THE VALUE OF STRING IS   :"<<d<<endl;
+}
+};
+//int add(int *a,int *b);
+int add(int a,int b);
+int main()
+{
+	/*base a;
+	a.setdata(1,2.2);
+	a.display();*/
+	/*int a,b,c;
+    c = add(2,3);
+    cout<<"THE VALUE OF C IS  :"<<c<<endl;
+    b = 20;
+    a = 10;
+    c = add(&b,&a);
+    cout<<"THE VALUE OF C IS  :"<<c<<endl;*/
+	getch();
+}
+int add(int a,int b)
+{
+	return(a+b);
+}
+int add(int *a,int *b)
+{
+	return(*a + *b);
+}
