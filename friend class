@@ -1,0 +1,39 @@
+#include<iostream>
+#include<string>
+#include<conio.h>
+using namespace std;
+class square
+{
+	int side;
+	public:
+	square()
+	{
+	  cout<<"ENTER VALUE OF SIDE"<<endl;
+	  cin>>side;
+	}
+	friend class rectangal;
+};
+class rectangal
+{
+	int width;
+	int height;
+	public:
+	void setdata(square s)
+	{
+      width = s.side;
+      height = s.side;	
+	}
+	void area()
+	{
+     cout<<"ARAE IS"<<width*height<<endl;	
+	}
+};
+
+int main()
+{
+	square s;
+	rectangal  a;
+	a.setdata(s);
+	a.area();
+	getch();
+}
