@@ -1,0 +1,50 @@
+#include<iostream>
+#include<string>
+#include<conio.h>
+using namespace std;
+class base
+{
+	protected:
+	int i;
+	public:
+	virtual void sum()=0;
+};
+class derived1:public base
+{
+  int j;
+  public:
+  void sum()
+  {
+  	cout<<"ENTER VALUE OF I"<<endl;
+  	cin>>i;
+  	cout<<"ENTER VALUE OF J"<<endl;
+  	cin>>j;
+  	cout<<"SUM ="<<i+j<<endl;
+  }	
+};
+class derived2:public base
+{
+	int k;
+	public:
+	void sum()
+  {
+  	cout<<"ENTER VALUE OF I"<<endl;
+  	cin>>i;
+  	cout<<"ENTER VALUE OF K"<<endl;
+  	cin>>k;
+  	cout<<"SUM ="<<i+k<<endl;
+  }	
+	
+};
+
+int main()
+{
+   base *bp;
+   derived1 a;
+   derived2 b;
+   bp = &a;
+   bp->sum();
+   bp = &b;
+   bp->sum();
+   getch();	
+}
