@@ -1,0 +1,51 @@
+#include<iostream>
+#include<string>
+#include<conio.h>
+using namespace std;
+class base
+{
+	public:
+	int i;
+	base()
+	{
+		i = 10;
+	}
+};
+class derived1:virtual public base
+{
+	public:
+	int j;
+	derived1()
+	{
+		j = 20;
+	}
+};
+class derived2:virtual public base
+{
+	public:
+   int k;	
+   derived2()
+   {
+   	k = 30;
+   }
+};
+class derived3:public derived1,public derived2
+{
+	public:
+	int l;
+	derived3()
+	{
+		l = 40;
+	}
+};
+
+int main()
+{
+	derived3 a;
+	int n;
+	n = a.i + a.j + a.k + a.l;
+	cout<<"SUM IS :"<<n<<endl;
+}
+
+
+
